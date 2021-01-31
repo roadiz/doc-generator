@@ -1,0 +1,28 @@
+{
+    "name": "roadiz/doc-generator",
+    "description": "Roadiz sub-package which generates Markdown documentation skeleton based on your schema",
+    "type": "library",
+    "require": {
+        "php": ">=7.4",
+        "roadiz/nodetype-contracts": "^1.0",
+        "symfony/translation": "^5.2",
+        "symfony/http-foundation": "^5.2",
+        "pimple/pimple": "^3.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ambroise Maupate",
+            "email": "ambroise@rezo-zero.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "RZ\\Roadiz\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^0.12.70",
+        "squizlabs/php_codesniffer": "^3.5"
+    }
+}
