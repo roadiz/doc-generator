@@ -10,14 +10,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class MarkdownGeneratorFactory
 {
-    /**
-     * @var ParameterBag
-     */
-    private $nodeTypesBag;
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
+    private ParameterBag $nodeTypesBag;
+    private TranslatorInterface $translator;
 
     /**
      * @param ParameterBag $nodeTypesBag

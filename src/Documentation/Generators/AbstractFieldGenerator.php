@@ -9,22 +9,10 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 abstract class AbstractFieldGenerator
 {
-    /**
-     * @var NodeTypeFieldInterface
-     */
-    protected $field;
-    /**
-     * @var TranslatorInterface
-     */
-    protected $translator;
-    /**
-     * @var ParameterBag
-     */
-    protected $nodeTypesBag;
-    /**
-     * @var MarkdownGeneratorFactory
-     */
-    protected $markdownGeneratorFactory;
+    protected NodeTypeFieldInterface $field;
+    protected TranslatorInterface $translator;
+    protected ParameterBag $nodeTypesBag;
+    protected MarkdownGeneratorFactory $markdownGeneratorFactory;
 
     /**
      * @param MarkdownGeneratorFactory $fieldGeneratorFactory

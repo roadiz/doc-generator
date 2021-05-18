@@ -13,26 +13,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class NodeTypeGenerator
 {
-    /**
-     * @var TranslatorInterface
-     */
-    protected $translator;
-    /**
-     * @var MarkdownGeneratorFactory
-     */
-    protected $markdownGeneratorFactory;
-    /**
-     * @var NodeTypeInterface
-     */
-    private $nodeType;
-    /**
-     * @var array
-     */
-    private $fieldGenerators;
-    /**
-     * @var ParameterBag
-     */
-    private $nodeTypesBag;
+    protected TranslatorInterface $translator;
+    protected MarkdownGeneratorFactory $markdownGeneratorFactory;
+    private NodeTypeInterface $nodeType;
+    private array $fieldGenerators;
+    private ParameterBag $nodeTypesBag;
 
     /**
      * @param NodeTypeInterface $nodeType
