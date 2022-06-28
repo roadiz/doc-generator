@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace RZ\Roadiz\Documentation\Generators;
@@ -15,24 +16,20 @@ class NodeTypeGenerator
 {
     protected TranslatorInterface $translator;
     protected MarkdownGeneratorFactory $markdownGeneratorFactory;
-    private NodeTypeInterface $nodeType;
-    private array $fieldGenerators;
-    private ParameterBag $nodeTypesBag;
+    protected NodeTypeInterface $nodeType;
+    protected array $fieldGenerators;
 
     /**
      * @param NodeTypeInterface $nodeType
-     * @param ParameterBag $nodeTypesBag
      * @param TranslatorInterface $translator
      * @param MarkdownGeneratorFactory $markdownGeneratorFactory
      */
     public function __construct(
         NodeTypeInterface $nodeType,
-        ParameterBag $nodeTypesBag,
         TranslatorInterface $translator,
         MarkdownGeneratorFactory $markdownGeneratorFactory
     ) {
         $this->nodeType = $nodeType;
-        $this->nodeTypesBag = $nodeTypesBag;
         $this->fieldGenerators = [];
         $this->translator = $translator;
         $this->markdownGeneratorFactory = $markdownGeneratorFactory;
@@ -45,7 +42,7 @@ class NodeTypeGenerator
 
     public function getMenuEntry(): string
     {
-        return '['.$this->nodeType->getLabel().']('.$this->getPath().')';
+        return '[' . $this->nodeType->getLabel() . '](' . $this->getPath() . ')';
     }
 
     public function getType(): string
@@ -86,7 +83,7 @@ class NodeTypeGenerator
             $lines[] = '| **' . trim($this->translator->trans('docs.publishable')) . '** | *' . $this->markdownGeneratorFactory->getHumanBool($this->nodeType->isPublishable()) . '* |';
         }
         if (!$this->nodeType->isVisible()) {
-            $lines[] = '| **' . trim($this->translator->trans('docs.visible')). '** | *' . $this->markdownGeneratorFactory->getHumanBool($this->nodeType->isVisible()) . '* |';
+            $lines[] = '| **' . trim($this->translator->trans('docs.visible')) . '** | *' . $this->markdownGeneratorFactory->getHumanBool($this->nodeType->isVisible()) . '* |';
         }
 
         return implode("\n", $lines);
