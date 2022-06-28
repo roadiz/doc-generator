@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace RZ\Roadiz\Documentation\Generators;
@@ -49,7 +50,7 @@ abstract class AbstractFieldGenerator
             '',
             '|     |     |',
             '| --- | --- |',
-            '| **' . trim($this->translator->trans('docs.type')) . '** | ' . $this->translator->trans($this->field->getTypeName()) .' |',
+            '| **' . trim($this->translator->trans('docs.type')) . '** | ' . $this->translator->trans($this->field->getTypeName()) . ' |',
             '| **' . trim($this->translator->trans('docs.technical_name')) . '** | `' . $this->field->getVarName() . '` |',
             '| **' . trim($this->translator->trans('docs.universal')) . '** | *' . $this->markdownGeneratorFactory->getHumanBool($this->field->isUniversal()) . '* |',
         ]);

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace RZ\Roadiz\Documentation\Generators;
@@ -23,8 +24,9 @@ class ChildrenNodeFieldGenerator extends AbstractFieldGenerator
     {
         if (null !== $this->field->getDefaultValues()) {
             return array_filter(array_map(function (string $nodeTypeName) {
-                return $this->nodeTypesBag->get(trim($nodeTypeName));
-            }, explode(',', $this->field->getDefaultValues() ?? '')));
+                $nodeType = $this->nodeTypesBag->get(trim($nodeTypeName));
+                return $nodeType instanceof NodeTypeInterface ? $nodeType : null;
+            }, explode(',', $this->field->getDefaultValues())));
         }
         return [];
     }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace RZ\Roadiz\Documentation\Generators;
@@ -37,7 +38,6 @@ final class MarkdownGeneratorFactory
     {
         return new NodeTypeGenerator(
             $nodeType,
-            $this->nodeTypesBag,
             $this->translator,
             $this
         );
