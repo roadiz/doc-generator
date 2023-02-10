@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RZ\Roadiz\Documentation\Generators;
+namespace RZ\Roadiz\Generators;
 
 final class NodeReferencesFieldGenerator extends ChildrenNodeFieldGenerator
 {
