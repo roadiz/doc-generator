@@ -20,6 +20,6 @@ final class DefaultValuedFieldGenerator extends AbstractFieldGenerator
             return implode("\n", [
                 '* **'.trim($this->translator->trans(trim($value))).'** `'.$value.'`',
             ]);
-        }, $this->field->getDefaultValuesAsArray()))."\n";
+        }, explode(',', $this->field->getDefaultValues() ?? '')))."\n";
     }
 }
