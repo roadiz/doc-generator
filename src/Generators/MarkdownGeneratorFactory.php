@@ -9,19 +9,12 @@ use RZ\Roadiz\Contracts\NodeType\NodeTypeInterface;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-final class MarkdownGeneratorFactory
+final readonly class MarkdownGeneratorFactory
 {
-    private ParameterBag $nodeTypesBag;
-    private TranslatorInterface $translator;
-
-    /**
-     * @param ParameterBag $nodeTypesBag
-     * @param TranslatorInterface $translator
-     */
-    public function __construct(ParameterBag $nodeTypesBag, TranslatorInterface $translator)
-    {
-        $this->nodeTypesBag = $nodeTypesBag;
-        $this->translator = $translator;
+    public function __construct(
+        private ParameterBag $nodeTypesBag,
+        private TranslatorInterface $translator,
+    ) {
     }
 
     public function getHumanBool(bool $bool): string
@@ -29,11 +22,6 @@ final class MarkdownGeneratorFactory
         return $bool ? $this->translator->trans('docs.yes') : $this->translator->trans('docs.no');
     }
 
-    /**
-     * @param NodeTypeInterface $nodeType
-     *
-     * @return NodeTypeGenerator
-     */
     public function createForNodeType(NodeTypeInterface $nodeType): NodeTypeGenerator
     {
         return new NodeTypeGenerator(
@@ -43,23 +31,13 @@ final class MarkdownGeneratorFactory
         );
     }
 
-    /**
-     * @param NodeTypeFieldInterface $field
-     *
-     * @return AbstractFieldGenerator
-     */
     public function createForNodeTypeField(NodeTypeFieldInterface $field): AbstractFieldGenerator
     {
-        switch (true) {
-            case $field->isNodes():
-                return new NodeReferencesFieldGenerator($this, $field, $this->nodeTypesBag, $this->translator);
-            case $field->isChildrenNodes():
-                return new ChildrenNodeFieldGenerator($this, $field, $this->nodeTypesBag, $this->translator);
-            case $field->isMultiple():
-            case $field->isEnum():
-                return new DefaultValuedFieldGenerator($this, $field, $this->nodeTypesBag, $this->translator);
-            default:
-                return new CommonFieldGenerator($this, $field, $this->nodeTypesBag, $this->translator);
-        }
+        return match (true) {
+            $field->isNodes() => new NodeReferencesFieldGenerator($this, $field, $this->nodeTypesBag, $this->translator),
+            $field->isChildrenNodes() => new ChildrenNodeFieldGenerator($this, $field, $this->nodeTypesBag, $this->translator),
+            $field->isMultiple(), $field->isEnum() => new DefaultValuedFieldGenerator($this, $field, $this->nodeTypesBag, $this->translator),
+            default => new CommonFieldGenerator($this, $field, $this->nodeTypesBag, $this->translator),
+        };
     }
 }
