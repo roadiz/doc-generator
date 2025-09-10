@@ -8,12 +8,13 @@ use RZ\Roadiz\Contracts\NodeType\NodeTypeInterface;
 
 class ChildrenNodeFieldGenerator extends AbstractFieldGenerator
 {
+    #[\Override]
     public function getContents(): string
     {
         return implode("\n\n", [
             $this->getIntroduction(),
-            '#### ' . $this->translator->trans('docs.available_children_blocks'),
-            $this->getAvailableChildren()
+            '#### '.$this->translator->trans('docs.available_children_blocks'),
+            $this->getAvailableChildren(),
         ]);
     }
 
@@ -25,9 +26,11 @@ class ChildrenNodeFieldGenerator extends AbstractFieldGenerator
         if (null !== $this->field->getDefaultValues()) {
             return array_filter(array_map(function (string $nodeTypeName) {
                 $nodeType = $this->nodeTypesBag->get(trim($nodeTypeName));
+
                 return $nodeType instanceof NodeTypeInterface ? $nodeType : null;
-            }, explode(',', $this->field->getDefaultValues())));
+            }, $this->field->getDefaultValuesAsArray()));
         }
+
         return [];
     }
 
@@ -35,10 +38,11 @@ class ChildrenNodeFieldGenerator extends AbstractFieldGenerator
     {
         return implode("\n", array_map(function (NodeTypeInterface $nodeType) {
             $nodeTypeGenerator = $this->markdownGeneratorFactory->createForNodeType($nodeType);
+
             return implode("\n", [
-                '* **' . trim($nodeTypeGenerator->getMenuEntry()) . '**    ',
+                '* **'.trim($nodeTypeGenerator->getMenuEntry()).'**    ',
                 $nodeType->getDescription(),
             ]);
-        }, $this->getChildrenNodeTypes())) . "\n";
+        }, $this->getChildrenNodeTypes()))."\n";
     }
 }
