@@ -8,7 +8,6 @@ use RZ\Roadiz\Contracts\NodeType\NodeTypeInterface;
 
 class ChildrenNodeFieldGenerator extends AbstractFieldGenerator
 {
-    #[\Override]
     public function getContents(): string
     {
         return implode("\n\n", [
@@ -28,7 +27,7 @@ class ChildrenNodeFieldGenerator extends AbstractFieldGenerator
                 $nodeType = $this->nodeTypesBag->get(trim($nodeTypeName));
 
                 return $nodeType instanceof NodeTypeInterface ? $nodeType : null;
-            }, $this->field->getDefaultValuesAsArray()));
+            }, explode(',', $this->field->getDefaultValues())));
         }
 
         return [];
