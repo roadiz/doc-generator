@@ -6,7 +6,6 @@ namespace RZ\Roadiz\Documentation\Generators;
 
 final class NodeReferencesFieldGenerator extends ChildrenNodeFieldGenerator
 {
-    #[\Override]
     public function getContents(): string
     {
         return implode("\n\n", [
