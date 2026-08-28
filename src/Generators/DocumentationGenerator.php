@@ -50,7 +50,9 @@ class DocumentationGenerator
      */
     public function getReachableTypeGenerators(): array
     {
-        $this->reachableTypeGenerators ??= array_map($this->markdownGeneratorFactory->createForNodeType(...), $this->getReachableTypes());
+        if (null === $this->reachableTypeGenerators) {
+            $this->reachableTypeGenerators = array_map($this->markdownGeneratorFactory->createForNodeType(...), $this->getReachableTypes());
+        }
 
         return $this->reachableTypeGenerators;
     }
@@ -60,7 +62,9 @@ class DocumentationGenerator
      */
     public function getNonReachableTypeGenerators(): array
     {
-        $this->nonReachableTypeGenerators ??= array_map($this->markdownGeneratorFactory->createForNodeType(...), $this->getNonReachableTypes());
+        if (null === $this->nonReachableTypeGenerators) {
+            $this->nonReachableTypeGenerators = array_map($this->markdownGeneratorFactory->createForNodeType(...), $this->getNonReachableTypes());
+        }
 
         return $this->nonReachableTypeGenerators;
     }
