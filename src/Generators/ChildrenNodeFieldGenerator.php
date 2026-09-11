@@ -8,7 +8,6 @@ use RZ\Roadiz\Contracts\NodeType\NodeTypeInterface;
 
 class ChildrenNodeFieldGenerator extends AbstractFieldGenerator
 {
-    #[\Override]
     public function getContents(): string
     {
         return implode("\n\n", [
