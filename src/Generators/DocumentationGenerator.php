@@ -10,7 +10,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class DocumentationGenerator
 {
-    private readonly MarkdownGeneratorFactory $markdownGeneratorFactory;
+    private MarkdownGeneratorFactory $markdownGeneratorFactory;
     private ?array $reachableTypeGenerators = null;
     private ?array $nonReachableTypeGenerators = null;
 
@@ -34,7 +34,9 @@ class DocumentationGenerator
      */
     protected function getReachableTypes(): array
     {
-        return array_filter($this->getAllNodeTypes(), fn (NodeTypeInterface $nodeType) => $nodeType->isReachable());
+        return array_filter($this->getAllNodeTypes(), function (NodeTypeInterface $nodeType) {
+            return $nodeType->isReachable();
+        });
     }
 
     /**
@@ -42,7 +44,9 @@ class DocumentationGenerator
      */
     protected function getNonReachableTypes(): array
     {
-        return array_filter($this->getAllNodeTypes(), fn (NodeTypeInterface $nodeType) => !$nodeType->isReachable());
+        return array_filter($this->getAllNodeTypes(), function (NodeTypeInterface $nodeType) {
+            return !$nodeType->isReachable();
+        });
     }
 
     /**
@@ -50,7 +54,11 @@ class DocumentationGenerator
      */
     public function getReachableTypeGenerators(): array
     {
-        $this->reachableTypeGenerators ??= array_map($this->markdownGeneratorFactory->createForNodeType(...), $this->getReachableTypes());
+        if (null === $this->reachableTypeGenerators) {
+            $this->reachableTypeGenerators = array_map(function (NodeTypeInterface $nodeType) {
+                return $this->markdownGeneratorFactory->createForNodeType($nodeType);
+            }, $this->getReachableTypes());
+        }
 
         return $this->reachableTypeGenerators;
     }
@@ -60,7 +68,11 @@ class DocumentationGenerator
      */
     public function getNonReachableTypeGenerators(): array
     {
-        $this->nonReachableTypeGenerators ??= array_map($this->markdownGeneratorFactory->createForNodeType(...), $this->getNonReachableTypes());
+        if (null === $this->nonReachableTypeGenerators) {
+            $this->nonReachableTypeGenerators = array_map(function (NodeTypeInterface $nodeType) {
+                return $this->markdownGeneratorFactory->createForNodeType($nodeType);
+            }, $this->getNonReachableTypes());
+        }
 
         return $this->nonReachableTypeGenerators;
     }

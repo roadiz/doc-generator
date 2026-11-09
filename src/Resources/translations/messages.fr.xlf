@@ -2,61 +2,61 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
   <file source-language="en" datatype="plaintext" original="file.ext" target-language="fr">
     <body>
-      <trans-unit id="docs.yes" approved="yes">
+      <trans-unit id="docs.yes">
         <source>docs.yes</source>
-        <target state="final">Oui</target>
+        <target state="translated">Oui</target>
       </trans-unit>
-      <trans-unit id="docs.no" approved="yes">
+      <trans-unit id="docs.no">
         <source>docs.no</source>
-        <target state="final">Non</target>
+        <target state="translated">Non</target>
       </trans-unit>
-      <trans-unit id="docs.available_children_blocks" approved="yes">
+      <trans-unit id="docs.available_children_blocks">
         <source>docs.available_children_blocks</source>
-        <target state="final">Blocs-enfants disponibles</target>
+        <target state="translated">Blocs-enfants disponibles</target>
       </trans-unit>
-      <trans-unit id="docs.type" approved="yes">
+      <trans-unit id="docs.type">
         <source>docs.type</source>
-        <target state="final">Type</target>
+        <target state="translated">Type</target>
       </trans-unit>
-      <trans-unit id="docs.universal" approved="yes">
+      <trans-unit id="docs.universal">
         <source>docs.universal</source>
-        <target state="final">Universel</target>
+        <target state="translated">Universel</target>
       </trans-unit>
-      <trans-unit id="docs.technical_name" approved="yes">
+      <trans-unit id="docs.technical_name">
         <source>docs.technical_name</source>
-        <target state="final">Nom technique</target>
+        <target state="translated">Nom technique</target>
       </trans-unit>
-      <trans-unit id="docs.group" approved="yes">
+      <trans-unit id="docs.group">
         <source>docs.group</source>
-        <target state="final">Groupe</target>
+        <target state="translated">Groupe</target>
       </trans-unit>
-      <trans-unit id="docs.excluded_from_search" approved="yes">
+      <trans-unit id="docs.excluded_from_search">
         <source>docs.excluded_from_search</source>
-        <target state="final">Exclu du moteur de recherche</target>
+        <target state="translated">Exclu du moteur de recherche</target>
       </trans-unit>
-      <trans-unit id="docs.visible" approved="yes">
+      <trans-unit id="docs.visible">
         <source>docs.visible</source>
-        <target state="final">Visible</target>
+        <target state="translated">Visible</target>
       </trans-unit>
-      <trans-unit id="docs.pages" approved="yes">
+      <trans-unit id="docs.pages">
         <source>docs.pages</source>
-        <target state="final">Pages</target>
+        <target state="translated">Pages</target>
       </trans-unit>
-      <trans-unit id="docs.blocks" approved="yes">
+      <trans-unit id="docs.blocks">
         <source>docs.blocks</source>
-        <target state="final">Blocs</target>
+        <target state="translated">Blocs</target>
       </trans-unit>
-      <trans-unit id="docs.available_referenced_nodes" approved="yes">
+      <trans-unit id="docs.available_referenced_nodes">
         <source>docs.available_referenced_nodes</source>
-        <target state="final">Références aux nœuds disponibles</target>
+        <target state="translated">Références aux nœuds disponibles</target>
       </trans-unit>
-      <trans-unit id="docs.fields" approved="yes">
+      <trans-unit id="docs.fields">
         <source>docs.fields</source>
-        <target state="final">Champs</target>
+        <target state="translated">Champs</target>
       </trans-unit>
-      <trans-unit id="docs.publishable" approved="yes">
+      <trans-unit id="docs.publishable">
         <source>docs.publishable</source>
-        <target state="final">Publiable par date et heure</target>
+        <target state="translated">Publiable par date et heure</target>
       </trans-unit>
     </body>
   </file>
